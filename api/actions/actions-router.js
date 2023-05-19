@@ -31,7 +31,7 @@ router.post("/",mv.validateUsername,async (req,res,next)=>{
 })
 router.put("/:id",mv.validateUserId,mv.validateUsername,async (req,res,next)=>{
     try {
-        const insertedUser = await model.insert({ project_id: req.body.project_id,description:req.body.description,notes:req.body.notes });
+        const insertedUser = await model.update(req.params.id,{ project_id: req.body.project_id,description:req.body.description,notes:req.body.notes });
         res.status(201).json(insertedUser);
     } catch (error) {
         next(error)

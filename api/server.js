@@ -1,12 +1,14 @@
 const express = require('express');
 const server = express();
 const actionrouter = require("./actions/actions-router")
+const projectrouter =require("./projects/projects-router")
 // Sunucunuzu yapılandırın
 // Eylem routerınızı /api/actions/actions-router.js içinde oluşturun
 // Proje roterlarınızı /api/projects/projects-router.js içinde oluşturun
 // Bu dosyanın içinde `server.listen()` YAPMAYIN!
 server.use(express.json());
 server.use("/api/actions",actionrouter);
+server.use("/api/projects",projectrouter)
 server.get('/', (req, res) => {
     res.send(`<h2>Biraz ara yazılım yazalım!</h2>`);
   });
